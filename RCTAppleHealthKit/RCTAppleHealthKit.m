@@ -20,6 +20,7 @@
 #import "RCTAppleHealthKit+Methods_Mindfulness.h"
 #import "RCTAppleHealthKit+Methods_Workout.h"
 #import "RCTAppleHealthKit+Methods_LabTests.h"
+#import "RCTAppleHealthKit+Methods_Summary.h"
 
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventDispatcher.h>
@@ -444,6 +445,24 @@ RCT_EXPORT_METHOD(saveBloodAlcoholContent: (NSDictionary *)input callback:(RCTRe
 {
     [self _initializeHealthStore];
     [self labTests_saveBloodAlcoholContent:input callback:callback];
+}
+
+RCT_EXPORT_METHOD(getActiveEnergyBurnedGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self _initializeHealthStore];
+    [self summary_getActiveEnergyBurnedGoal:input callback:callback];
+}
+
+RCT_EXPORT_METHOD(getAppleExerciseTimeGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self _initializeHealthStore];
+    [self summary_getAppleExerciseTimeGoal:input callback:callback];
+}
+
+RCT_EXPORT_METHOD(getAppleStandTimeGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+{
+    [self _initializeHealthStore];
+    [self summary_getAppleStandTimeGoal:input callback:callback];
 }
 
 

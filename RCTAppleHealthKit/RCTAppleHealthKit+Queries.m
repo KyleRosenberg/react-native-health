@@ -879,4 +879,27 @@
     }];
 }
 
+- (void)fetchActivitySummary:(NSDate *)startDate
+                     endDate:(NSDate *)endDate
+                  completion:(void (^)(NSArray<HKActivitySummary *> *, NSError *))completionHandler
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K >= %@ AND %K <= %@",
+                              HKPredicateKeyPathStartDate, startDate,
+                              HKPredicateKeyPathEndDate, endDate];
+    // Create the query
+    HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
+                                        resultsHandler:^(HKActivitySummaryQuery *query, NSArray<HKActivitySummary *> *results, NSError *error) {
+        if (error) {
+            // Perform proper error handling here
+            NSLog(@"*** An error occurred while calculating the statistics: %@ ***",error.localizedDescription);
+        }
+        
+        NSError *err;
+        completionHandler(results, err);
+    }];
+
+    [self.healthStore executeQuery:query];
+    
+}
+
 @end
