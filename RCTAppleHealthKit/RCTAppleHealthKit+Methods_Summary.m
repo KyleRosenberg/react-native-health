@@ -16,7 +16,8 @@
 -(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
     RCTLog(@"IN OBJ C");
-    callback(@[[NSNull null], [NSNull null]]);
+    RCTLog(input);
+    callback(@[[NSNull null], input]);
 }
 
 //-(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
