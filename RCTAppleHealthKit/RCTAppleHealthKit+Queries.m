@@ -885,11 +885,15 @@
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
 
-    NSDateComponents *dateComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+    NSDateComponents *startComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra
                                                      fromDate:startDate];
-    dateComponent.calendar = calendar;
+    startComponent.calendar = calendar;
     
-    NSPredicate *predicate = [HKQuery predicateForActivitySummaryWithDateComponents:dateComponent];
+    NSDateComponents *endComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra
+                                                     fromDate:startDate];
+    endComponent.calendar = calendar;
+    
+    NSPredicate *predicate = [HKQuery predicateForActivitySummariesBetweenStartDateComponents:startComponent endDateComponents:endComponent];
     
     
     HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
