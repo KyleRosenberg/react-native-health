@@ -306,9 +306,7 @@
 
 
 + (NSDate *)dateFromOptions:(NSDictionary *)options key:(NSString *)key withDefault:(NSDate *)defaultValue {
-    RCTLog(@"dateFromOptions");
     NSString *dateString = [options objectForKey:key];
-    RCTLog(dateString);
     NSDate *date;
     if(dateString != nil){
         date = [RCTAppleHealthKit parseISO8601DateFromString:dateString];

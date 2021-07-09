@@ -15,17 +15,15 @@
 
 -(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
-    RCTLog(@"Start date");
     NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
-    RCTLog(@"End date");
     NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
 
     void (^completion)(NSArray *results, NSError *error);
 
-    completion = ^(NSArray<HKActivitySummary *> *results, NSError *error) {
+    completion = ^(NSArray *results, NSError *error) {
         if (results){
-
-            callback(@[[NSNull null], results]);
+            
+            callback(@[[NSNull null], [results valueForKey:@"activeEnergyBurnedGoal"]]);
 
             return;
         } else {
@@ -46,7 +44,7 @@
     
     void (^completion)(NSArray *results, NSError *error);
 
-    completion = ^(NSArray<HKActivitySummary *> *results, NSError *error) {
+    completion = ^(NSArray *results, NSError *error) {
         if (results){
             
             callback(@[[NSNull null], [results valueForKey:@"appleExerciseTimeGoal"]]);

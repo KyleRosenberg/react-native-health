@@ -897,7 +897,8 @@
     
     
     HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
-                                        resultsHandler:^(HKActivitySummaryQuery *query, NSArray<HKActivitySummary *> *results, NSError *error) {
+                                        resultsHandler:^(HKActivitySummaryQuery *query, NSArray *results, NSError *error) {
+        
         if (error) {
             // Perform proper error handling here
             NSLog(@"*** An error occurred while fetching the summary: %@ ***",error.localizedDescription);
