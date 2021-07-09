@@ -189,6 +189,10 @@
     if ([@"BloodAlcoholContent" isEqualToString: key]) {
         return [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBloodAlcoholContent];
     }
+    // Activity Summary
+    if ([@"Summary" isEqualToString:key]){
+        return [HKObjectType activitySummaryType];
+    }
 
     return nil;
 }

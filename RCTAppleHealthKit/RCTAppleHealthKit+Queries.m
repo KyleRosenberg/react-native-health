@@ -898,7 +898,7 @@
                                         resultsHandler:^(HKActivitySummaryQuery *query, NSArray<HKActivitySummary *> *results, NSError *error) {
         if (error) {
             // Perform proper error handling here
-            NSLog(@"*** An error occurred while calculating the statistics: %@ ***",error.localizedDescription);
+            NSLog(@"*** An error occurred while fetching the summary: %@ ***",error.localizedDescription);
         }
         
         NSError *err;

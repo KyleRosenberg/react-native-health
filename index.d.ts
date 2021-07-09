@@ -590,7 +590,8 @@ declare module 'react-native-health' {
     Vo2Max = 'Vo2Max',
     Weight = 'Weight',
     Workout = 'Workout',
-    WaistCircumference = 'WaistCircumference'
+    WaistCircumference = 'WaistCircumference',
+    Summary = "Summary"
   }
 
   export enum HealthUnit {
