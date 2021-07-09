@@ -883,10 +883,14 @@
                      endDate:(NSDate *)endDate
                   completion:(void (^)(NSArray<HKActivitySummary *> *, NSError *))completionHandler
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K >= %@ AND %K <= %@",
-                              HKPredicateKeyPathStartDate, startDate,
-                              HKPredicateKeyPathEndDate, endDate];
-    // Create the query
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *interval = [[NSDateComponents alloc] init];
+    interval.day = 1;
+
+    NSDateComponents *dateComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                                     fromDate:startDate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",
+    HKPredicateKeyPathDateComponents, dateComponent];
     HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
                                         resultsHandler:^(HKActivitySummaryQuery *query, NSArray<HKActivitySummary *> *results, NSError *error) {
         if (error) {
