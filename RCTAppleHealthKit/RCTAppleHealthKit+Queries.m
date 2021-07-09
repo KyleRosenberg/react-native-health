@@ -879,4 +879,37 @@
     }];
 }
 
+- (void)fetchActivitySummary:(NSDate *)startDate
+                     endDate:(NSDate *)endDate
+                  completion:(void (^)(NSArray<HKActivitySummary *> *, NSError *))completionHandler
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    NSDateComponents *startComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra
+                                                     fromDate:startDate];
+    startComponent.calendar = calendar;
+    
+    NSDateComponents *endComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra
+                                                     fromDate:startDate];
+    endComponent.calendar = calendar;
+    
+    NSPredicate *predicate = [HKQuery predicateForActivitySummariesBetweenStartDateComponents:startComponent endDateComponents:endComponent];
+    
+    
+    HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
+                                        resultsHandler:^(HKActivitySummaryQuery *query, NSArray *results, NSError *error) {
+        
+        if (error) {
+            // Perform proper error handling here
+            NSLog(@"*** An error occurred while fetching the summary: %@ ***",error.localizedDescription);
+        }
+        
+        NSError *err;
+        completionHandler(results, err);
+    }];
+
+    [self.healthStore executeQuery:query];
+    
+}
+
 @end

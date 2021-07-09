@@ -91,4 +91,8 @@
                       type:(NSString *)type
                     bridge:(RCTBridge *)bridge;
 
+- (void)fetchActivitySummary:(NSDate *)startDate
+                     endDate:(NSDate *)endDate
+                  completion:(void (^)(NSArray<HKActivitySummary *> *, NSError *))completionHandler;
+
 @end
