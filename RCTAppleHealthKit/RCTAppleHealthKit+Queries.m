@@ -884,15 +884,13 @@
                   completion:(void (^)(NSArray<HKActivitySummary *> *, NSError *))completionHandler
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *interval = [[NSDateComponents alloc] init];
-    interval.day = 1;
 
     NSDateComponents *dateComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                                      fromDate:startDate];
     dateComponent.calendar = calendar;
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",
-    HKPredicateKeyPathDateComponents, dateComponent];
+    NSPredicate *predicate = [HKQuery predicateForActivitySummaryWithDateComponents:dateComponent];
+    
     
     HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
                                         resultsHandler:^(HKActivitySummaryQuery *query, NSArray<HKActivitySummary *> *results, NSError *error) {
