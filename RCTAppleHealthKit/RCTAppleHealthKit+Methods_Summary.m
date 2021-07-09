@@ -15,36 +15,29 @@
 
 -(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
-    RCTLog(@"IN OBJ C");
+    RCTLog(@"Start date");
     NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
-    callback(@[[NSNull null], [NSNull null]]);
-}
+    RCTLog(@"End date");
+    NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
 
-//-(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
-//{
-//    RCTLog(@"Here");
-//    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
-//    NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
-//    RCTLog(startDate);
-//
-//    void (^completion)(NSArray *results, NSError *error);
-//
-//    completion = ^(NSArray<HKActivitySummary *> *results, NSError *error) {
-//        if (results){
-//
-//            callback(@[[NSNull null], [results valueForKey:@"activeEnergyBurnedGoal"]]);
-//
-//            return;
-//        } else {
-//            NSLog(@"error getting samples: %@", error);
-//            callback(@[RCTMakeError(@"error getting goals", error, nil)]);
-//
-//            return;
-//        }
-//    };
-//
-//    [self fetchActivitySummary:startDate endDate:endDate completion:completion];
-//}
+    void (^completion)(NSArray *results, NSError *error);
+
+    completion = ^(NSArray<HKActivitySummary *> *results, NSError *error) {
+        if (results){
+
+            callback(@[[NSNull null], [results valueForKey:@"activeEnergyBurnedGoal"]]);
+
+            return;
+        } else {
+            NSLog(@"error getting samples: %@", error);
+            callback(@[RCTMakeError(@"error getting goals", error, nil)]);
+
+            return;
+        }
+    };
+
+    [self fetchActivitySummary:startDate endDate:endDate completion:completion];
+}
 
 -(void)summary_getAppleExerciseTimeGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {

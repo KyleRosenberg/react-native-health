@@ -449,9 +449,6 @@ RCT_EXPORT_METHOD(saveBloodAlcoholContent: (NSDictionary *)input callback:(RCTRe
 
 RCT_EXPORT_METHOD(getActiveEnergyBurnedGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
 {
-    if (input == NULL){
-        RCTLog(@"input null");
-    }
     [self _initializeHealthStore];
     [self summary_getActiveEnergyBurnedGoal:input callback:callback];
 }
