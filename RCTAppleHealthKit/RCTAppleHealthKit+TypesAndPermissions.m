@@ -191,8 +191,13 @@
     }
     // Activity Summary
     if ([@"Summary" isEqualToString:key]){
+        RCTLog(@"Permission found");
+        RCTLog(key);
         return [HKObjectType activitySummaryType];
     }
+    
+    RCTLog(@"Permission not found");
+    RCTLog(key);
 
     return nil;
 }
