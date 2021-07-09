@@ -27,7 +27,7 @@
 
             return;
         } else {
-            NSLog(@"error getting samples: %@", error);
+            NSLog(@"error getting goals: %@", error);
             callback(@[RCTMakeError(@"error getting goals", error, nil)]);
 
             return;
@@ -51,7 +51,7 @@
 
             return;
         } else {
-            NSLog(@"error getting samples: %@", error);
+            NSLog(@"error getting goals: %@", error);
             callback(@[RCTMakeError(@"error getting goals", error, nil)]);
 
             return;
@@ -75,7 +75,7 @@
 
             return;
         } else {
-            NSLog(@"error getting samples: %@", error);
+            NSLog(@"error getting goals: %@", error);
             callback(@[RCTMakeError(@"error getting goals", error, nil)]);
 
             return;
