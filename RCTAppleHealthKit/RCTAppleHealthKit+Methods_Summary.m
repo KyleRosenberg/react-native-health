@@ -6,7 +6,7 @@
 //  LICENSE file in the root directory of this source tree.
 //
 
-#import "RCTAppleHealthKit+Summary.h"
+#import "RCTAppleHealthKit+Methods_Summary.h"
 #import "RCTAppleHealthKit+Queries.h"
 #import "RCTAppleHealthKit+Utils.h"
 #import <React/RCTLog.h>

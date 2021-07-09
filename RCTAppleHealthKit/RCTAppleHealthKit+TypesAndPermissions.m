@@ -463,10 +463,10 @@
         @"HandCycling": @(HKWorkoutActivityTypeHandCycling),
         @"DiscSports": @(HKWorkoutActivityTypeDiscSports),
         @"FitnessGaming": @(HKWorkoutActivityTypeFitnessGaming),
-        @"CardioDance": @(HKWorkoutActivityTypeCardioDance),
-        @"SocialDance": @(HKWorkoutActivityTypeSocialDance),
-        @"Pickleball": @(HKWorkoutActivityTypePickleball),
-        @"Cooldown": @(HKWorkoutActivityTypeCooldown),
+//        @"CardioDance": @(HKWorkoutActivityTypeCardioDance),
+//        @"SocialDance": @(HKWorkoutActivityTypeSocialDance),
+//        @"Pickleball": @(HKWorkoutActivityTypePickleball),
+//        @"Cooldown": @(HKWorkoutActivityTypeCooldown),
         @"Other": @(HKWorkoutActivityTypeOther),
     };
     return elem;
