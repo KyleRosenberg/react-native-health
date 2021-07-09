@@ -25,7 +25,7 @@
     completion = ^(NSArray<HKActivitySummary *> *results, NSError *error) {
         if (results){
 
-            callback(@[[NSNull null], [results]);
+            callback(@[[NSNull null], [results]]);
 
             return;
         } else {
