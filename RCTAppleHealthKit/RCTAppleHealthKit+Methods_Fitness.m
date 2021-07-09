@@ -129,6 +129,7 @@
 
 - (void)fitness_saveSteps:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
+    RCTLog(input);
     double value = [RCTAppleHealthKit doubleFromOptions:input key:@"value" withDefault:(double)0];
     NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
     NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
