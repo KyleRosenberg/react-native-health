@@ -889,8 +889,11 @@
 
     NSDateComponents *dateComponent = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                                      fromDate:startDate];
+    dateComponent.calendar = calendar;
+    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@",
     HKPredicateKeyPathDateComponents, dateComponent];
+    
     HKActivitySummaryQuery *query = [[HKActivitySummaryQuery alloc] initWithPredicate:predicate
                                         resultsHandler:^(HKActivitySummaryQuery *query, NSArray<HKActivitySummary *> *results, NSError *error) {
         if (error) {
