@@ -350,6 +350,21 @@ declare module 'react-native-health' {
 
     setObserver(options: HealthObserverOptions): void
 
+    getActiveEnergyBurnedGoal(
+      options: HealthInputOptions,
+      callback: (err: string, results: Array<HealthValue>) => void,
+    ): void
+
+    getAppleExerciseTimeGoal(
+      options: HealthInputOptions,
+      callback: (err: string, results: Array<HealthValue>) => void,
+    ): void
+
+    getAppleStandTimeGoal(
+      options: HealthInputOptions,
+      callback: (err: string, results: Array<HealthValue>) => void,
+    ): void
+
     Constants: Constants
   }
 
