@@ -16,7 +16,7 @@
 -(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
     RCTLog(@"IN OBJ C");
-    RCTLog(input);
+    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
     callback(@[[NSNull null], [NSNull null]]);
 }
 
