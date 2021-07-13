@@ -917,14 +917,21 @@
                 HKQuantity *aetg = sample.appleExerciseTimeGoal;
                 HKQuantity *ash = sample.appleStandHours;
                 HKQuantity *ashg = sample.appleStandHoursGoal;
+                
+                double aebVal = [aeb doubleValueForUnit:[HKUnit kilocalorieUnit]];
+                double aebgVal = [aebg doubleValueForUnit:[HKUnit kilocalorieUnit]];
+                double aetVal = [aet doubleValueForUnit:[HKUnit minuteUnit]];
+                double aetgVal = [aetg doubleValueForUnit:[HKUnit minuteUnit]];
+                double ashVal = [ash doubleValueForUnit:[HKUnit countUnit]];
+                double ashgVal = [ashg doubleValueForUnit:[HKUnit countUnit]];
 
                 NSDictionary *elem = @{
-                        @"activeEnergyBurned" : @([aeb doubleValueForUnit:[HKUnit kilocalorieUnit]]),
-                        @"activeEnergyBurnedGoal" : @([aebg doubleValueForUnit:[HKUnit kilocalorieUnit]]),
-                        @"appleExerciseTime" : @([aet doubleValueForUnit:[HKUnit minuteUnit]]),
-                        @"appleExerciseTimeGoal" : @([aetg doubleValueForUnit:[HKUnit minuteUnit]]),
-                        @"appleStandHours" : @([ash doubleValueForUnit:[HKUnit countUnit]]),
-                        @"appleStandHoursGoal" : @([ashg doubleValueForUnit:[HKUnit countUnit]]),
+                        @"activeEnergyBurned" : @(aebVal),
+                        @"activeEnergyBurnedGoal" : @(aebgVal),
+                        @"appleExerciseTime" : @(aetVal),
+                        @"appleExerciseTimeGoal" : @(aetgVal),
+                        @"appleStandHours" : @(ashVal),
+                        @"appleStandHoursGoal" : @(ashgVal),
                 };
 
                 [data addObject:elem];
