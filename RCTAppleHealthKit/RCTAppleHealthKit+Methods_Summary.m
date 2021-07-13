@@ -23,7 +23,7 @@
     completion = ^(NSArray *results, NSError *error) {
         if (results){
             
-            callback(@[[NSNull null], [results valueForKey:@"activeEnergyBurnedGoal"]]);
+            callback(@[[NSNull null], results]);
 
             return;
         } else {
