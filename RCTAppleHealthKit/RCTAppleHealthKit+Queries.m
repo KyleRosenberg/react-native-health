@@ -902,7 +902,36 @@
         if (error) {
             // Perform proper error handling here
             NSLog(@"*** An error occurred while fetching the summary: %@ ***",error.localizedDescription);
+            completionHandler(nil, error);
+            return;
         }
+        
+        NSMutableArray *data = [NSMutableArray arrayWithCapacity:1];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            for (HKActivitySummary *sample in results) {
+                HKQuantity *aeb = sample.activeEnergyBurned;
+                HKQuantity *aebg = sample.activeEnergyBurnedGoal;
+                HKQuantity *aet = sample.appleExerciseTime;
+                HKQuantity *aetg = sample.appleExerciseTimeGoal;
+                HKQuantity *ash = sample.appleStandHours;
+                HKQuantity *ashg = sample.appleStandHoursGoal;
+
+                NSDictionary *elem = @{
+                        @"activeEnergyBurned" : @([aeb doubleValueForUnit:[HKUnit kilocalorieUnit]]),
+                        @"activeEnergyBurnedGoal" : @([aebg doubleValueForUnit:[HKUnit kilocalorieUnit]]),
+                        @"appleExerciseTime" : @([aet doubleValueForUnit:[HKUnit minuteUnit]]),
+                        @"appleExerciseTimeGoal" : @([aetg doubleValueForUnit:[HKUnit minuteUnit]]),
+                        @"appleStandHours" : @([ash doubleValueForUnit:[HKUnit countUnit]]),
+                        @"appleStandHoursGoal" : @([ashg doubleValueForUnit:[HKUnit countUnit]]),
+                };
+
+                [data addObject:elem];
+            }
+
+            completion(data, error);
+        });
         
         NSError *err;
         completionHandler(results, err);
