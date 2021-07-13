@@ -930,7 +930,7 @@
                 [data addObject:elem];
             }
 
-            completion(data, error);
+            completionHandler(data, error);
         });
         
         NSError *err;
