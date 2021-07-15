@@ -93,6 +93,6 @@
 
 - (void)fetchActivitySummary:(NSDate *)startDate
                      endDate:(NSDate *)endDate
-                  completion:(void (^)(NSArray<HKActivitySummary *> *, NSError *))completionHandler;
+                  completion:(void (^)(NSArray *, NSError *))completionHandler;
 
 @end
