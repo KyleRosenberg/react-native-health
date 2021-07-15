@@ -447,22 +447,10 @@ RCT_EXPORT_METHOD(saveBloodAlcoholContent: (NSDictionary *)input callback:(RCTRe
     [self labTests_saveBloodAlcoholContent:input callback:callback];
 }
 
-RCT_EXPORT_METHOD(getActiveEnergyBurnedGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(getActivitySummary: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
 {
     [self _initializeHealthStore];
-    [self summary_getActiveEnergyBurnedGoal:input callback:callback];
-}
-
-RCT_EXPORT_METHOD(getAppleExerciseTimeGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
-{
-    [self _initializeHealthStore];
-    [self summary_getAppleExerciseTimeGoal:input callback:callback];
-}
-
-RCT_EXPORT_METHOD(getAppleStandTimeGoal: (NSDictionary *)input callback:(RCTResponseSenderBlock)callback)
-{
-    [self _initializeHealthStore];
-    [self summary_getAppleStandTimeGoal:input callback:callback];
+    [self summary_getActivitySummary:input callback:callback];
 }
 
 

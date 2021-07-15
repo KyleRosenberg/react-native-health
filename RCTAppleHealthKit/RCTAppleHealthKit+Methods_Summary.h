@@ -10,8 +10,6 @@
 
 @interface RCTAppleHealthKit (Methods_Summary)
 
-- (void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
-- (void)summary_getAppleExerciseTimeGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
-- (void)summary_getAppleStandTimeGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
+- (void)summary_getActivitySummary:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback;
 
 @end

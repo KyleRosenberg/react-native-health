@@ -918,12 +918,12 @@
                 HKQuantity *ash = sample.appleStandHours;
                 HKQuantity *ashg = sample.appleStandHoursGoal;
                 
-                double aebVal = [aeb doubleValueForUnit:[HKUnit kilocalorieUnit]];
-                double aebgVal = [aebg doubleValueForUnit:[HKUnit kilocalorieUnit]];
-                double aetVal = [aet doubleValueForUnit:[HKUnit minuteUnit]];
-                double aetgVal = [aetg doubleValueForUnit:[HKUnit minuteUnit]];
-                double ashVal = [ash doubleValueForUnit:[HKUnit countUnit]];
-                double ashgVal = [ashg doubleValueForUnit:[HKUnit countUnit]];
+                int aebVal = [aeb doubleValueForUnit:[HKUnit kilocalorieUnit]];
+                int aebgVal = [aebg doubleValueForUnit:[HKUnit kilocalorieUnit]];
+                int aetVal = [aet doubleValueForUnit:[HKUnit minuteUnit]];
+                int aetgVal = [aetg doubleValueForUnit:[HKUnit minuteUnit]];
+                int ashVal = [ash doubleValueForUnit:[HKUnit countUnit]];
+                int ashgVal = [ashg doubleValueForUnit:[HKUnit countUnit]];
 
                 NSDictionary *elem = @{
                         @"activeEnergyBurned" : @(aebVal),
@@ -939,9 +939,6 @@
 
             completionHandler(data, error);
         });
-        
-        NSError *err;
-        completionHandler(results, err);
     }];
 
     [self.healthStore executeQuery:query];

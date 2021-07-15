@@ -13,7 +13,7 @@
 
 @implementation RCTAppleHealthKit (Summary)
 
--(void)summary_getActiveEnergyBurnedGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
+-(void)summary_getActivitySummary:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
 {
     NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
     NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
@@ -34,54 +34,6 @@
         }
     };
 
-    [self fetchActivitySummary:startDate endDate:endDate completion:completion];
-}
-
--(void)summary_getAppleExerciseTimeGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
-{
-    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
-    NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
-    
-    void (^completion)(NSArray *results, NSError *error);
-
-    completion = ^(NSArray *results, NSError *error) {
-        if (results){
-            
-            callback(@[[NSNull null], [results valueForKey:@"appleExerciseTimeGoal"]]);
-
-            return;
-        } else {
-            NSLog(@"error getting goals: %@", error);
-            callback(@[RCTMakeError(@"error getting goals", error, nil)]);
-
-            return;
-        }
-    };
-    
-    [self fetchActivitySummary:startDate endDate:endDate completion:completion];
-}
-
--(void)summary_getAppleStandTimeGoal:(NSDictionary *)input callback:(RCTResponseSenderBlock)callback
-{
-    NSDate *startDate = [RCTAppleHealthKit dateFromOptions:input key:@"startDate" withDefault:nil];
-    NSDate *endDate = [RCTAppleHealthKit dateFromOptions:input key:@"endDate" withDefault:[NSDate date]];
-    
-    void (^completion)(NSArray *results, NSError *error);
-
-    completion = ^(NSArray<HKActivitySummary *> *results, NSError *error) {
-        if (results){
-            
-            callback(@[[NSNull null], [results valueForKey:@"appleStandHoursGoal"]]);
-
-            return;
-        } else {
-            NSLog(@"error getting goals: %@", error);
-            callback(@[RCTMakeError(@"error getting goals", error, nil)]);
-
-            return;
-        }
-    };
-    
     [self fetchActivitySummary:startDate endDate:endDate completion:completion];
 }
 
